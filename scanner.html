@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>V-SAVE</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- html5-qrcode@2.3.8 -->
+    <script src="html5-qrcode.min.js"></script>
+    <!-- <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script> -->
+</head>
+<body style="background:#e0eeee;">
+    <div class="container">
+    <br>
+    <!-- //////////////Nav Bar//////////////////// -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark" style="background-color:#06693A;">
+        <div class="container-fluid">
+          <?php
+            $target='index.php';
+           // $target='unset_session.php';       //javascript:history.back()
+          ?>
+            <a href="<?=$target;?>" class="navbar-brand">
+            <!-- <i class="fa-solid fa-van-shuttle"  style="font-size:24px;"></i> -->
+            <!-- <i class="fa-solid fa-mosquito-net" style="font-size:20px;"></i> -->
+            <i class="fa-solid fa-bus-simple" style="font-size:24px;"></i>
+            <!-- <i class="fa fa-bus" style="font-size:24px;"></i> -->
+            <b>V-SAVE</b><sup>&copy;</sup></a>
+    
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="navbar-toggler-icon">
+    
+                </span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav">
+                    <!-- <a href="#" class="nav-item nav-link">Group QR-Code</a> 
+                    <a href="#" class="nav-item nav-link">QR-Code Count</a>  -->
+                </div>
+                <div class="navbar-nav ms-auto">             
+                    <!-- <a href="vsave_report.php" class="nav-item nav-link">Report</a> -->
+                </div>
+            </div>
+        </div>
+    </nav>
+    <br>
+    <br>
+    
+    <div style="padding:10px;text-align:center;color:#06693A;font-size: 3vw;">
+    <b>
+      <!-- Vector Surveillance for Across-border Vehicles</b> -->
+      <font color=black>V</font>ector 
+      <font color=black>S</font>urveillance for 
+      <font color=black>A</font>cross-border 
+      <font color=black>Ve</font>hicles</b>
+    </div>  
+    </center>
+    <!-- //////////End Nav Bar///////////////////// -->
+   
+    <br>  
+
+<!--//// screen display section //////-->
+<table align="center" style='width: 18rem;' border=0 bgcolor=white><tr>
+<td>&nbsp;&nbsp;</td>
+<td align="center">
+    <p>
+    <div style="line-height: 80%;">
+        <font size=5 color=darkred><b>QR</b></font><font size=5 color=red><b>scanner<sup>&copy;</sup></b></font>
+        <br>
+        <font size="2">Scanner for Vehicle QR-Code</font>
+    </div>
+    </p>
+    
+    <div class="row">
+        <div class="col">
+          <div style="width:280px;" id="reader"></div>
+        </div>
+    </div>
+
+    <div class="row">
+      <div class="col" style="padding:5px;">
+        <!-- <h4>SCAN RESULT</h4> -->
+        <div id="result1"></div> <!-- Result Here -->
+        <input type="text" name="pid" id="result2" value="" style='width: 18rem;outline:none;border:none' placeholder=""/>
+      </div>
+    </div>
+
+<td>&nbsp;&nbsp;</td>
+</tr></table> 
+        
+<center><font size=1>version : kidmat-022024</font></center>
+        
+<!--//// screen display section //////-->
+
+    <!--//////////////////////////// javascript section -->
+    <script type="text/javascript">
+        MyRedirect();
+        function MyRedirect(){
+            let myurl="http://209.15.98.146/vsave/mobile/index.php?v=";
+            let inputElem = document.querySelector('input');
+            inputElem.addEventListener('input', () => {
+              if(inputElem.value.length >=13){
+                //window.location.replace("http://209.15.98.146/hujat-info/index.php?p=3960400280121");//redirect
+                window.location.replace(myurl + inputElem.value);//redirect
+              }
+            });
+        }
+
+        function onScanSuccess(qrCodeMessage) {
+            document.getElementById('result1').innerHTML = '<span class="result">'+qrCodeMessage+'</span>';
+            strArray = qrCodeMessage.split("=");
+            //document.getElementById('result').value = qrCodeMessage;
+            document.getElementById('result2').value = strArray[1];
+            window.location.replace("http://209.15.98.146/vsave/mobile/index.php?v=" + strArray[1]);//redirect
+           
+        }
+
+        function onScanError(errorMessage) {
+          //handle scan error
+        }
+
+        let config = {
+          fps: 10,
+          qrbox: {width: 250, height: 250},
+          rememberLastUsedCamera: true,
+          // Only support camera scan type.
+          supportedScanTypes: [Html5QrcodeScanType.SCAN_TYPE_CAMERA]
+        };
+        let html5QrcodeScanner = new Html5QrcodeScanner(
+            "reader", config, /* verbose= */ false);
+        html5QrcodeScanner.render(onScanSuccess);
+    </script> 
+    <!--//////////////////////////// javascript section -->
+
+<!-- ///Footer///////////// -->
+<hr>
+<footer>
+    <center><font size=1><i class="fa-solid fa-bus-simple"></i> V-SAVE<sup>&copy;</sup> Copyright 2024, version: kidmat </font></center>
+</footer>
+<!-- ///Footer///////////// -->
+
+</div>    <!-- container -->
+</body>
+</html>
