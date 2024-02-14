@@ -94,7 +94,7 @@
     <script type="text/javascript">
         MyRedirect();
         function MyRedirect(){
-            let myurl="http://209.15.98.146/vsave/mobile/index.php?v=";
+            let myurl="http://209.15.98.146/apps/vsave/mobile/index.php?v=";
             let inputElem = document.querySelector('input');
             inputElem.addEventListener('input', () => {
               if(inputElem.value.length >=13){
@@ -109,7 +109,7 @@
             strArray = qrCodeMessage.split("=");
             //document.getElementById('result').value = qrCodeMessage;
             document.getElementById('result2').value = strArray[1];
-            window.location.replace("http://209.15.98.146/vsave/mobile/index.php?v=" + strArray[1]);//redirect
+            window.location.replace("http://209.15.98.146/apps/vsave/mobile/index.php?v=" + strArray[1]);//redirect
            
         }
 
