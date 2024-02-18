@@ -18,7 +18,8 @@
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark" style="background-color:#06693A;">
         <div class="container-fluid">
           
-            <a href="http://209.15.98.146/apps/vsave/mobile/index.php" class="navbar-brand">
+            <a href="http://vsave.great-site.net/mobile" class="navbar-brand">
+              <!--  <a href="http://209.15.98.146/apps/vsave/mobile/" class="navbar-brand"> -->
             <!-- <i class="fa-solid fa-van-shuttle"  style="font-size:24px;"></i> -->
             <!-- <i class="fa-solid fa-mosquito-net" style="font-size:20px;"></i> -->
             <i class="fa-solid fa-bus-simple" style="font-size:24px;"></i>
@@ -94,7 +95,8 @@
     <script type="text/javascript">
         MyRedirect();
         function MyRedirect(){
-            let myurl="http://209.15.98.146/apps/vsave/mobile/index.php?v=";
+            let myurl="http://vsave.great-site.net/mobile/index.php?v=";
+            //let myurl="http://209.15.98.146/apps/vsave/mobile/index.php?v=";
             let inputElem = document.querySelector('input');
             inputElem.addEventListener('input', () => {
               if(inputElem.value.length >=13){
@@ -109,7 +111,8 @@
             strArray = qrCodeMessage.split("=");
             //document.getElementById('result').value = qrCodeMessage;
             document.getElementById('result2').value = strArray[1];
-            window.location.replace("http://209.15.98.146/apps/vsave/mobile/index.php?v=" + strArray[1]);//redirect
+            window.location.replace("http://vsave.great-site.net/mobile/index.php?v=" + strArray[1]);//redirect
+            // window.location.replace("http://209.15.98.146/apps/vsave/mobile/index.php?v=" + strArray[1]);//redirect
            
         }
 
